@@ -1,10 +1,8 @@
+import os
 from firebase import firebase
-firebase = firebase.FirebaseApplication('https://your_storage.firebaseio.com', authentication=None)
 
-authentication = firebase.Authentication('THIS_IS_MY_SECRET', 'ozgurvt@gmail.com', extra={'id': 123})
-firebase.authentication = authentication
+auth = firebase.Authentication(os.environ['API_KEY'], os.environ['API_EMAIL'])
+firebase = firebase.FirebaseApplication(os.environ['API_URL'], authentication=auth)
 
-result = firebase.get('/users', None, {'print': 'pretty'})
-print result
-user = authentication.get_user()
-print user.firebase_auth_token
+def query():
+    return firebase.get('/users', None, {'print': 'pretty'})
