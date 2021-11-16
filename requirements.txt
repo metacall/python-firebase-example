@@ -1,3 +1,4 @@
 setuptools==59.2.0
 rsa==4.7.2
+google-cloud-firestore==2.3.4
 firebase-admin==5.1.0
